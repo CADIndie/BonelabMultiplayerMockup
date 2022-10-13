@@ -154,7 +154,3 @@ D:\VisualStudioProjects\BonelabMultiplayerMockup\obj\Debug\BonelabMultiplayerMoc
 D:\VisualStudioProjects\BonelabMultiplayerMockup\obj\Debug\BonelabMultiplayerMockup.dll
 D:\VisualStudioProjects\BonelabMultiplayerMockup\obj\Debug\BonelabMultiplayerMockup.pdb
 D:\VisualStudioProjects\BonelabMultiplayerMockup\bin\Debug\UniTask.Addressables.dll
-C:\Users\Darien Johnson\Documents\GitHub\BonelabMultiplayerMockup\obj\Debug\BonelabMultiplayerMockup.csproj.AssemblyReference.cache
-C:\Users\Darien Johnson\Documents\GitHub\BonelabMultiplayerMockup\obj\Debug\BonelabMultiplayerMockup.csproj.CoreCompileInputs.cache
-C:\Users\Darien Johnson\Documents\GitHub\BonelabMultiplayerMockup\obj\Debug\BonelabMultiplayerMockup.dll
-C:\Users\Darien Johnson\Documents\GitHub\BonelabMultiplayerMockup\obj\Debug\BonelabMultiplayerMockup.pdb
