@@ -84,8 +84,10 @@ namespace BonelabMultiplayerMockup.Nodes
                 Id = lobby.Id.ToString(),
                 Size = new PartySize { CurrentSize = 1, MaxSize = 10 }
             };
-            DiscordIntegration.activity.Details = "This user is hosting a HBMP server!";
-            DiscordIntegration.activity.State = "Killing with friends";
+            DiscordIntegration.activity.Details = "Hosting a HBMP server!";
+            DiscordIntegration.activity.State = "Playing Bonelab Campaign | Coop!";
+            //DiscordIntegration.activity.DetailsCoop = "Hosting a HBMP server!";
+            //DiscordIntegration.activity.StateCoop = "Playig Bonelab Story | Coop!";
             DiscordIntegration.activity.Secrets = new ActivitySecrets
             {
                 Join = DiscordIntegration.lobbyManager.GetLobbyActivitySecret(lobby.Id)

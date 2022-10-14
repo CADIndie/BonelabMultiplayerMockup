@@ -60,7 +60,7 @@ namespace BonelabMultiplayerMockup
         {
             activity = new Activity
             {
-                State = "Playing alone",
+                State = "Playing Multiplayer",
                 Details = "Not connected to a server",
                 Instance = true,
                 Assets =

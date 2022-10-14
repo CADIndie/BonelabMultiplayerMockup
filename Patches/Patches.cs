@@ -8,16 +8,21 @@ using BonelabMultiplayerMockup.Packets.Player;
 using BonelabMultiplayerMockup.Utils;
 using BoneLib;
 using HarmonyLib;
+using Il2CppSystem;
 using MelonLoader;
 using SLZ.AI;
 using SLZ.Bonelab;
 using SLZ.Interaction;
 using SLZ.Marrow.Pool;
+using SLZ.Marrow.Proxy;
 using SLZ.Marrow.Warehouse;
 using SLZ.Props.Weapons;
 using SLZ.Rig;
+using SLZ.UI;
 using SLZ.Zones;
+using TriangleNet;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Avatar = SLZ.VRMK.Avatar;
 
 namespace BonelabMultiplayerMockup.Patches
@@ -64,7 +69,7 @@ namespace BonelabMultiplayerMockup.Patches
 
         }
 
-        public static IEnumerator WaitForAttachSync(GameObject toSync)
+        public static IEnumerator WaitForAttachSync(GameObject toSync) 
         {
             if (PatchVariables.shouldIgnoreGrabbing)
             {
@@ -102,6 +107,31 @@ namespace BonelabMultiplayerMockup.Patches
                 }
             }
         }
+        
+        public class NewGameManager
+        {
+            public static string NewGameStart = "de3f04bcdb8729147bff9d8812500a4a";
+            private bool _isGameNew = NewGameStart.Equals(SceneManager.GetActiveScene().name);
+            
+            public void CheckGameStart(SceneAmmoUI.SceneNames sceneNames)
+            {
+                
+                if (DiscordIntegration.hasLobby && DiscordIntegration.isHost)
+                {
+                    if (_isGameNew)
+                    {
+                        if (DiscordIntegration.isHost)
+                        {
+                            DebugLogger.Msg("Hosting | New Co-op session Initiating...");
+                            //TODO: find way to force player to noose and have noose ignore other players.
+                        }
+                        else DebugLogger.Msg("Joining | New Co-op session Initiating...");
+                             //TODO: find a way to force player to spawn in crowd.
+
+                    }
+                }
+            }
+        }
 
         [HarmonyPatch(typeof(AssetPoolee), "OnSpawn")]
         private class PoolPatch
@@ -110,9 +140,8 @@ namespace BonelabMultiplayerMockup.Patches
             {
                 if (DiscordIntegration.hasLobby)
                 {
-
                     bool isNPC = PoolManager.GetComponentOnObject<AIBrain>(__instance.gameObject) != null;
-                    bool foundSpawnGun = false;
+                    bool foundSpawnGun = false; 
                     bool isHost = DiscordIntegration.isHost;
                     if (Player.GetComponentInHand<SpawnGun>(Player.leftHand))
                     {
